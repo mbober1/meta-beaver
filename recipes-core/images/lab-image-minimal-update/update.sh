@@ -4,8 +4,8 @@ if [ $# -lt 1 ]; then
 	exit 0;
 fi
 
-FIRST_PART="8"
-SECOND_PART="9"
+FIRST_PART="3"
+SECOND_PART="4"
 
 function get_current_root_device
 {

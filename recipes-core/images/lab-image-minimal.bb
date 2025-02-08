@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit core-image
 
 IMAGE_LINGUAS = "en-us en-gb"
+IMAGE_MACHINE_SUFFIX = ""
 
 PACKAGE_CLASSES = "package_ipk"
 INIT_MANAGER = "systemd"
@@ -48,9 +49,6 @@ EXTRA_IMAGE_FEATURES = " \
   tools-debug \
   ssh-server-openssh \
 "
-
-BAD_RECOMMENDATIONS += "udev-hwdb"
-
 
 #Always add cmake to sdk
 TOOLCHAIN_HOST_TASK:append = " nativesdk-cmake"

@@ -7,7 +7,7 @@ software =
 
         files: (
                 {
-									filename = "lab-image-minimal-radxa-zero-3e-custom.rootfs.tar.zst";
+									filename = "lab-image-minimal.rootfs.tar.zst";
 									type = "archive";
 									device = "/dev/update";
 									filesystem = "ext4";

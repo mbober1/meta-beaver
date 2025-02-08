@@ -14,6 +14,6 @@ SRC_URI = "\
 IMAGE_DEPENDS = "lab-image-minimal"
 
 # images and files that will be included in the .swu image
-SWUPDATE_IMAGES = "lab-image-minimal-radxa-zero-3e-custom.rootfs.tar.zst"
+SWUPDATE_IMAGES = "lab-image-minimal.rootfs.tar.zst"
 
 SWUPDATE_IMAGES_FSTYPES[lab-image-minimal] = ".tar.zst"
