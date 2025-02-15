@@ -6,8 +6,8 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_VERSION_SANITY_SKIP="1"
-LINUX_VERSION = "6.9+"
-BRANCH = "master"
+LINUX_VERSION = "6.13+"
+BRANCH = "rk3588"
 SRCREV = "${AUTOREV}"
 SRCPV = "${@bb.fetch2.get_srcrev(d)}"
 
@@ -15,7 +15,9 @@ SRC_URI = " \
 	git://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux.git;protocol=https;branch=${BRANCH} \
 	file://rockchip-kmeta;type=kmeta;name=rockchip-kmeta;destsuffix=rockchip-kmeta \
 	git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=master;destsuffix=kernel-meta;protocol=https \
+	file://arm64-dts-rockchip-Add-Rock-5B-plus.patch \
 	file://nvme.cfg \
+	${@bb.utils.contains('DISTRO_FEATURES', 'wifi-pci', 'file://realtek_RTL8852BE.cfg', '', d)} \
 "
 
 DEPENDS += "lzop-native"

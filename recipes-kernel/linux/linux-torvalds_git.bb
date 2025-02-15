@@ -16,6 +16,7 @@ SRC_URI = " \
 	file://rockchip-kmeta;type=kmeta;name=rockchip-kmeta;destsuffix=rockchip-kmeta \
 	git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=master;destsuffix=kernel-meta;protocol=https \
 	file://nvme.cfg \
+	file://arm64-dts-rockchip-Add-Rock-5B-plus.patch \
 	${@bb.utils.contains('DISTRO_FEATURES', 'can', 'file://0001-Enable-MCP2515-on-SPI3-M1-CS0.patch', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'spi', 'file://0001-radxa-zero-3E-Enable-SPI1-spidev.patch', '', d)} \
 	${@bb.utils.contains('DISTRO_FEATURES', 'gps', 'file://0001-radxa-zero-3E-Enable-UART3.patch', '', d)} \
