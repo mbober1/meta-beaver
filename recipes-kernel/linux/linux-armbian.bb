@@ -6,15 +6,16 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_VERSION_SANITY_SKIP="1"
-LINUX_VERSION = "6.13+"
-BRANCH = "rock5b-plus"
+LINUX_VERSION = "6.1+"
+BRANCH = "rk-6.1-rkr5"
 SRCREV = "${AUTOREV}"
 SRCPV = "${@bb.fetch2.get_srcrev(d)}"
 
 SRC_URI = " \
-	git://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux.git;protocol=https;branch=${BRANCH} \
-	file://beaver-kmeta;type=kmeta;name=beaver-kmeta;destsuffix=beaver-kmeta \
-	git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=yocto-meta;branch=master;destsuffix=kernel-meta;protocol=https \
+	git://github.com/armbian/linux-rockchip.git;protocol=https;branch=${BRANCH} \
+	file://rockchip-kmeta;type=kmeta;name=rockchip-kmeta;destsuffix=rockchip-kmeta \
+	git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-6.1;destsuffix=kernel-meta;protocol=https \
+	${@bb.utils.contains('DISTRO_FEATURES', 'wifi-pci', 'file://realtek_RTL8852BE.cfg', '', d)} \
 "
 
 DEPENDS += "lzop-native"

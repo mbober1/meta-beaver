@@ -1,0 +1,9 @@
+[connection]
+type=gsm
+autoconnect=true
+
+[gsm]
+apn=darmowy
+
+[ipv4]
+method=auto

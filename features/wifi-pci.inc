@@ -1,12 +1,15 @@
-KERNEL_FEATURES += "features/wifi/wifi-common.scc"
-DISTRO_FEATURES:append = " wifi-pci"
+KERNEL_FEATURES += " \
+  features/wifi/wifi-common.scc \
+  features/wifi/wifi-realtek.scc \
+"
+
+DISTRO_FEATURES:append = " wifi"
 UBOOT_EXTLINUX_KERNEL_ARGS += "cma=512mb"
 
 IMAGE_INSTALL += " \
   pciutils \
   linux-firmware \
-  iw \
-  wpa-supplicant \
+  networkmanager \
   rfkill \
   wireless-regdb \
   "
