@@ -1,5 +1,5 @@
 KERNEL_FEATURES += " \
-  features/wifi/wifi-pci.scc \
+  features/wwan/wwan.scc \
 "
 
 IMAGE_INSTALL += " \

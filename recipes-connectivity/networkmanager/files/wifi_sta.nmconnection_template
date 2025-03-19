@@ -1,0 +1,13 @@
+[connection]
+type=wifi
+
+[wifi]
+mode=infrastructure
+ssid=op://Private/Wifi-5-psk/network name
+
+[wifi-security]
+key-mgmt=sae
+psk=op://Private/Wifi-5-psk/wireless network password
+
+[ipv4]
+method=auto
