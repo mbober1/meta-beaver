@@ -27,8 +27,17 @@ You can enable feature adding ```include features/<feature_name>.inc``` to local
 
 ## Dependencies
 
-  URI: <first dependency>
-  branch: <branch name>
+  Layer: OECORE
+  URI: https://github.com/openembedded/openembedded-core.git
 
-  URI: <second dependency>
-  branch: <branch name>
+  Layer: BITBAKE
+  URI: https://github.com/openembedded/bitbake.git
+
+  Layer: CLANG
+  URI: https://github.com/kraj/meta-clang
+
+  Layer: SWUPDATE
+  URI: https://github.com/sbabic/meta-swupdate
+
+  Layer: VIRTUALIZATION
+  URI: https://git.yoctoproject.org/meta-virtualization
