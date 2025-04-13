@@ -4,8 +4,9 @@ PACKAGECONFIG:append = " modemmanager wwan"
 
 SRC_URI:append = " \
     file://Aero2.nmconnection \
-    file://wifi_sta.nmconnection \
 "
+
+#SRC_URI:append = " file://wifi_sta.nmconnection"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/NetworkManager/system-connections
