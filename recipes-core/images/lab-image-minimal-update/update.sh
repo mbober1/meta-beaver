@@ -6,6 +6,7 @@ fi
 
 FIRST_PART="3"
 SECOND_PART="4"
+DEV_PATH="/dev/mmcblk0"
 
 function get_current_root_device
 {
@@ -14,8 +15,6 @@ function get_current_root_device
 			CURRENT_ROOT="${i:5}"
 		fi
 	done
-
-	# CURRENT_ROOT == /dev/mmcblkXpY
 }
 
 function get_update_part
@@ -59,6 +58,6 @@ fi
 if [ $1 == "postinst" ]; then
 
 	# change bootable flag
-	((echo "x"; echo "A"; echo $FIRST_PART; echo "A"; echo $SECOND_PART; echo "r"; echo "w") | fdisk /dev/mmcblk0)
-
+	((echo "x"; echo "A"; echo $FIRST_PART; echo "A"; echo $SECOND_PART; echo "r"; echo "w") | fdisk $DEV_PATH)
+	sync
 fi
