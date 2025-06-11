@@ -4,19 +4,18 @@ DEPENDS:append = " e2fsprogs libarchive zstd"
 do_package_qa[noexec] = "1"
 
 SRC_URI += "\
-	file://html/favicon.png \
-	file://html/logo.png \
-	file://html/background.jpg \
 	file://swupdate.cfg \
 	file://swupdate.default \
 "
 
 do_install:append () {
-	install -m 644 ${WORKDIR}/html/favicon.png ${D}/www/images/
-	install -m 644 ${WORKDIR}/html/logo.png ${D}/www/images/
-	install -m 644 ${WORKDIR}/html/background.jpg ${D}/www/images/
+	if ${@bb.utils.contains('BAMBIK_SOURCES', '1', 'true', 'false', d)}; then
+		rm -R ${D}${wwwdir}
+	fi
 
 	install -m 644 ${WORKDIR}/swupdate.cfg ${D}${sysconfdir}/
 	install -d ${D}${sysconfdir}/default/
 	install -m 644 ${WORKDIR}/swupdate.default ${D}${sysconfdir}/default/swupdate
 }
+
+RDEPENDS:${PN} += "${@bb.utils.contains('BAMBIK_SOURCES', '1', 'galaktyczny-updater', '', d)}"

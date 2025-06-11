@@ -18,23 +18,23 @@ KERNEL_EXTRA_INSTALL = " \
   kernel-modules \
 "
 
-IMAGE_FEATURES:append = " \
-  hwcodecs \
+DEV_TOOLS = " \
+  nano \
+  htop \
+  rsync \
 "
 
 IMAGE_INSTALL += " \
   ${KERNEL_EXTRA_INSTALL} \
+  ${DEV_TOOLS} \
   packagegroup-core-boot \
 	swupdate \
 	swupdate-www \
 	swupdate-client \
 	swupdate-tools \
-  nano \
-  htop \
   openssh \
   e2fsprogs \
   openssl \
-  rsync \
   libubootenv \
   network-config-misc \
   util-linux \
