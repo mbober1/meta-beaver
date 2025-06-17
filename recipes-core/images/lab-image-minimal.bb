@@ -45,7 +45,10 @@ IMAGE_INSTALL += " \
 "
 
 EXTRA_IMAGE_FEATURES = " \
-  debug-tweaks \
+  allow-empty-password \
+  allow-root-login \
+  empty-root-password \
+  post-install-logging \
   tools-debug \
   ssh-server-openssh \
 "

@@ -8,7 +8,8 @@ SRC_URI = "https://github.com/oven-sh/bun/releases/download/bun-v${VERSION}/bun-
 
 SRC_URI[sha256sum] = "a261626367835bb3754a01ae07f884484ed17b0886b01e417b799591fa4d7901"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/sources"
+UNPACKDIR = "${S}"
 
 inherit native
 
