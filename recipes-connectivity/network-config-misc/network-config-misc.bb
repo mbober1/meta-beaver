@@ -20,7 +20,7 @@ do_compile[noexec] = "1"
 
 do_install() {
 	install -d 0755 ${D}/etc/systemd/network
-	install -m 0644 ${WORKDIR}/*.network ${D}/etc/systemd/network/
+	install -m 0644 ${UNPACKDIR}/*.network ${D}/etc/systemd/network/
 }
 
 FILES_${PN} = "/etc/systemd/network"

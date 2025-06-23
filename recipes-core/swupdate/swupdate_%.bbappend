@@ -13,9 +13,9 @@ do_install:append () {
 		rm -R ${D}${wwwdir}
 	fi
 
-	install -m 644 ${WORKDIR}/swupdate.cfg ${D}${sysconfdir}/
+	install -m 644 ${UNPACKDIR}/swupdate.cfg ${D}${sysconfdir}/
 	install -d ${D}${sysconfdir}/default/
-	install -m 644 ${WORKDIR}/swupdate.default ${D}${sysconfdir}/default/swupdate
+	install -m 644 ${UNPACKDIR}/swupdate.default ${D}${sysconfdir}/default/swupdate
 }
 
 RDEPENDS:${PN} += "${@bb.utils.contains('BAMBIK_SOURCES', '1', 'galaktyczny-updater', '', d)}"
