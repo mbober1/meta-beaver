@@ -54,5 +54,5 @@ EXTRA_IMAGE_FEATURES = " \
 "
 
 #Always add cmake to sdk
-TOOLCHAIN_HOST_TASK:append = " nativesdk-cmake"
+TOOLCHAIN_HOST_TASK:append = " nativesdk-cmake nativesdk-meson"
 TOOLCHAIN_TARGET_TASK += " libgl-mesa-dev libegl-mesa-dev libgles1-mesa-dev libgles2-mesa-dev libgles3-mesa-dev"
