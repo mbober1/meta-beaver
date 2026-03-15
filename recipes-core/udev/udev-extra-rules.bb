@@ -6,8 +6,7 @@ SRC_URI = " \
     file://serial.rules \
 "
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 do_install() {
 	install -d ${D}${sysconfdir}/udev/rules.d

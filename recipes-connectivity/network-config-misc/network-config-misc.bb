@@ -12,8 +12,7 @@ SRC_URI += "\
 	file://80-can.network \
 "
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
