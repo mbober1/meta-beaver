@@ -6,17 +6,19 @@ SRC_URI = " \
     "
 
 PV = "1.0.0+git"
-SRCREV = "231efe0149cb9b7853c363b9ec22f4c606890a18"
+SRCREV = "5c63b7f3680df25433912c74d1425baabc5254e0"
 
-S = "${WORKDIR}/git"
 WWW_DIR ?= "/www"
 
-DEPENDS += "bun-native"
+DEPENDS += "nodejs-native"
 
 
-do_compile() {
-    bun install
-    bun run build
+do_compile[network] = "1"
+do_compile () {
+    cd ${S}
+    rm -rf node_modules
+    npm --loglevel info --proxy=${http_proxy} --https-proxy=${https_proxy} install
+    npm run build ${EXTRA_OENPM}
 }
 
 do_install() {

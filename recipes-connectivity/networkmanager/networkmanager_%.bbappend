@@ -11,7 +11,7 @@ SRC_URI:append = " \
 do_install:append() {
     install -d ${D}${sysconfdir}/NetworkManager/system-connections
 
-    for CONFIG in ${WORKDIR}/*.nmconnection; do
+    for CONFIG in ${UNPACKDIR}/*.nmconnection; do
         install -m 0600 ${CONFIG} ${D}${sysconfdir}/NetworkManager/system-connections
     done
 }
