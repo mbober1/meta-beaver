@@ -1,0 +1,26 @@
+From c9840a0ee089dcb687c2f072e8ea4e1c0990950e Mon Sep 17 00:00:00 2001
+From: Marcin Bober <mbober1@gmail.com>
+Date: Sun, 12 Apr 2026 19:23:25 +0000
+Subject: [PATCH] fix-setuptools-requirements
+Upstream-Status: Inappropriate
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index bd288a4..8a99a2b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -60,7 +60,7 @@ Homepage = "https://github.com/NotPunchnox/rkllama"
+ Issues = "https://github.com/NotPunchnox/rkllama/issues"
+ 
+ [build-system]
+-requires = ["setuptools < 82.0.0"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project.scripts]
+-- 
+2.34.1
+
