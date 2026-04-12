@@ -22,6 +22,8 @@ DEV_TOOLS = " \
   nano \
   htop \
   rsync \
+  usbutils \
+  pciutils \
 "
 
 IMAGE_INSTALL += " \
@@ -52,7 +54,3 @@ EXTRA_IMAGE_FEATURES = " \
   tools-debug \
   ssh-server-openssh \
 "
-
-#Always add cmake to sdk
-TOOLCHAIN_HOST_TASK:append = " nativesdk-cmake nativesdk-meson"
-TOOLCHAIN_TARGET_TASK += " libgl-mesa-dev libegl-mesa-dev libgles1-mesa-dev libgles2-mesa-dev libgles3-mesa-dev"
