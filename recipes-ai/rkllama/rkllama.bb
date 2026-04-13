@@ -13,3 +13,9 @@ SRCREV = "45d76b35df829bafb98c2ed4ca57a7a02e516421"
 inherit python_setuptools_build_meta
 
 INSANE_SKIP:${PN} += "already-stripped ldflags file-rdeps"
+
+RDEPENDS:${PN} += "\
+    python3-resource \
+    python3-requests \
+    python3-python-dotenv \
+"
