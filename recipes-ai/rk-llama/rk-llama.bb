@@ -18,9 +18,4 @@ EXTRA_OECMAKE = " \
 "
 
 DEPENDS += "openssl"
-
-do_install:append() {
-    install -m 755 ${S}/ggml/src/ggml-rknpu2/libs/librknnrt.so ${D}/${libdir}
-}
-
-INSANE_SKIP:${PN} += "already-stripped"
+RDEPENDS:${PN} += "rknn-runtime"
