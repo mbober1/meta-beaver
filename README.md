@@ -5,6 +5,7 @@ Distro meta layer for Yocto Project
 - bluetooth
 - can
 - containers
+- display
 - gps
 - spi
 - usb-gadgets

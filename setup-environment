@@ -34,6 +34,7 @@ INHERIT += "rm_work"
 # include features/gps.inc
 # include features/can.inc
 # include features/spi.inc
+# include features/display.inc
 # include features/wifi-usb.inc
 # include features/containers.inc
 
