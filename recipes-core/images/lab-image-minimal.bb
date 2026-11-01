@@ -24,6 +24,7 @@ DEV_TOOLS = " \
   rsync \
   usbutils \
   pciutils \
+  devmem2 \
 "
 
 IMAGE_INSTALL += " \
@@ -44,6 +45,12 @@ IMAGE_INSTALL += " \
   e2fsprogs-tune2fs \
   e2fsprogs-resize2fs \
   udev-extra-rules \
+"
+
+IMAGE_INSTALL:append:rk3506 = " \
+  rk3506-rproc \
+  rpmsg-bench \
+  firmware-rk3506 \
 "
 
 EXTRA_IMAGE_FEATURES = " \
