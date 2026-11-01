@@ -7,6 +7,7 @@ Distro meta layer for Yocto Project
 - containers
 - display
 - gps
+- rproc
 - spi
 - usb-gadgets
 - wifi-pci

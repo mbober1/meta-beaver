@@ -47,12 +47,6 @@ IMAGE_INSTALL += " \
   udev-extra-rules \
 "
 
-IMAGE_INSTALL:append:rk3506 = " \
-  rk3506-rproc \
-  rpmsg-bench \
-  firmware-rk3506 \
-"
-
 EXTRA_IMAGE_FEATURES = " \
   allow-empty-password \
   allow-root-login \
