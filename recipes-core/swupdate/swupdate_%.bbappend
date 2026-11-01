@@ -9,13 +9,10 @@ SRC_URI += "\
 "
 
 do_install:append () {
-	if ${@bb.utils.contains('BAMBIK_SOURCES', '1', 'true', 'false', d)}; then
-		rm -R ${D}${wwwdir}
-	fi
-
+	rm -R ${D}${wwwdir}
 	install -m 644 ${UNPACKDIR}/swupdate.cfg ${D}${sysconfdir}/
 	install -d ${D}${sysconfdir}/default/
 	install -m 644 ${UNPACKDIR}/swupdate.default ${D}${sysconfdir}/default/swupdate
 }
 
-RDEPENDS:${PN} += "${@bb.utils.contains('BAMBIK_SOURCES', '1', 'galaktyczny-updater', '', d)}"
+RDEPENDS:${PN} += "galaktyczny-updater"
