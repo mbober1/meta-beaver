@@ -1,0 +1,15 @@
+[Unit]
+Description=Grow the persistent data partition to fill the boot medium
+Documentation=man:sfdisk(8)
+DefaultDependencies=no
+Conflicts=shutdown.target
+Before=shutdown.target data.mount local-fs.target
+After=systemd-udevd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/grow-data-partition
+
+[Install]
+WantedBy=local-fs.target

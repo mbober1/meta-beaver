@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# Grow the persistent data partition (and its ext4 filesystem) so it uses the
+# free space at the end of the boot medium.
+#
+# The data partition is the last one created by ota_partitions.wks.in, so it
+# can be extended without moving anything. wic only writes a fixed-size image,
+# which is usually flashed onto a larger SD card / eMMC, so the extra space is
+# reclaimed on the first boot.
+#
+# The service runs before /data is mounted and only touches the partition
+# table entry of the data partition (BLKPG update via partx), so it is safe to
+# run while the rootfs partitions of the same disk are in use.
+
+PATH="/usr/sbin:/usr/bin:/sbin:/bin:${PATH}"
+
+error()
+{
+	echo "grow-data-partition: $*" >&2
+}
+
+DEV="$(findfs PARTLABEL=data 2>/dev/null)" || exit 0
+[ -b "$DEV" ] || exit 0
+DEV="$(readlink -f "$DEV")"
+NAME="$(basename "$DEV")"
+
+PART_NO="$(cat "/sys/class/block/${NAME}/partition" 2>/dev/null)"
+[ -n "$PART_NO" ] || exit 0
+
+DISK="/dev/$(basename "$(readlink -f "/sys/class/block/${NAME}/..")")"
+
+# Only the last partition can be extended in place.
+LAST_PART_NO="$(lsblk -nro PARTN "$DISK" | sort -n | tail -1)"
+if [ "$PART_NO" != "$LAST_PART_NO" ]; then
+	exit 0
+fi
+
+[ "$(blkid -o value -s TYPE "$DEV" 2>/dev/null)" = "ext4" ] || exit 0
+
+START="$(cat "/sys/class/block/${NAME}/start")"
+DISK_SECTORS="$(cat "/sys/class/block/$(basename "$DISK")/size")"
+PART_SECTORS="$(cat "/sys/class/block/${NAME}/size")"
+
+# Keep the backup GPT header and its partition entries intact.
+USABLE_SECTORS=$((DISK_SECTORS - 33))
+END_SECTORS=$((START + PART_SECTORS))
+
+if [ "$USABLE_SECTORS" -le "$END_SECTORS" ]; then
+	# Already using all of the available space.
+	exit 0
+fi
+
+echo "grow-data-partition: growing $DEV from $PART_SECTORS to $((USABLE_SECTORS - START)) sectors"
+
+if ! sfdisk --force --no-reread -N "$PART_NO" "$DISK" >/dev/null <<EOF
+start=${START}, size=$((USABLE_SECTORS - START))
+EOF
+then
+	error "failed to resize partition ${PART_NO} on ${DISK}"
+	exit 1
+fi
+
+# Make the kernel pick up the new size. partx uses the BLKPG interface, which
+# works even though other partitions of the disk (the rootfs slots) are
+# mounted. Fall back to blockdev for the cases where partx is unavailable.
+partx -u "$DISK" >/dev/null 2>&1 || blockdev --rereadpt "$DISK" >/dev/null 2>&1
+
+# The filesystem is not mounted at this point, so resize it offline.
+e2fsck -p "$DEV" >/dev/null 2>&1 || true
+if ! resize2fs "$DEV" >/dev/null 2>&1; then
+	error "failed to resize the filesystem on ${DEV}"
+	exit 1
+fi
+
+exit 0

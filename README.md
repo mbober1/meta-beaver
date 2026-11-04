@@ -2,11 +2,11 @@ Distro meta layer for Yocto Project
 =========================================
 
 ## Software Features
-- bluetooth
 - can
 - containers
 - display
 - gps
+- ota
 - rproc
 - spi
 - usb-gadgets
@@ -19,12 +19,10 @@ You can enable feature adding ```include features/<feature_name>.inc``` to local
 ## TODO
 - add Hawkbit
 - add RAUC (compare with SWUpdate)
-- auto resize data partition
 - add OTA fallback
 - wireguard template via NetworkManager
 - Squashfs?
 - add Devicetree overlays support
-- Overlayfs
 - Initramfs
 
 ## Dependencies

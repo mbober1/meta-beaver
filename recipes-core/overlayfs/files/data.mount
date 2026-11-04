@@ -1,0 +1,13 @@
+[Unit]
+Description=Persistent data partition
+Wants=data-grow.service
+After=data-grow.service
+
+[Mount]
+What=/dev/disk/by-partlabel/data
+Where=/data
+Type=ext4
+Options=defaults,nofail
+
+[Install]
+WantedBy=local-fs.target

@@ -38,6 +38,7 @@ INHERIT += "rm_work"
 # include features/rproc.inc
 # include features/wifi-usb.inc
 # include features/containers.inc
+# include features/ota.inc
 
 EOF
 
@@ -62,4 +63,4 @@ for layer in $LAYERS; do
     bitbake-layers add-layer $layer > /dev/null 2>&1
 done
 
-echo "To start building, run 'bitbake lab-image-minimal-update'"
+echo "To start building, run 'bitbake lab-image-minimal'"

@@ -31,14 +31,9 @@ IMAGE_INSTALL += " \
   ${KERNEL_EXTRA_INSTALL} \
   ${DEV_TOOLS} \
   packagegroup-core-boot \
-	swupdate \
-	swupdate-www \
-	swupdate-client \
-	swupdate-tools \
   openssh \
   e2fsprogs \
   openssl \
-  libubootenv \
   network-config-misc \
   util-linux \
   e2fsprogs \
