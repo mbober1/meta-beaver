@@ -31,14 +31,15 @@ INHERIT += "rm_work"
 # BUILDHISTORY_COMMIT = "1"
 
 ## Additional fetures
-# include features/gps.inc
+# include features/camera.inc
 # include features/can.inc
-# include features/spi.inc
-# include features/display.inc
-# include features/rproc.inc
-# include features/wifi-usb.inc
 # include features/containers.inc
+# include features/display.inc
+# include features/gps.inc
 # include features/ota.inc
+# include features/rproc.inc
+# include features/spi.inc
+# include features/wifi-usb.inc
 
 EOF
 
