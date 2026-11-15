@@ -1,0 +1,10 @@
+You can now run 'bitbake <target>'
+
+Common image targets:
+    lab-image-minimal
+    lab-image-qt
+
+Common OTA targets:
+    lab-image-minimal-update
+
+The update target produces the OTA bundle (.swu) applied with SWUpdate.

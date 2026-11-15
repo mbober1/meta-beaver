@@ -1,0 +1,46 @@
+# BeaverOS local configuration sample
+
+PATCHRESOLVE = "noop"
+
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    HALT,${TMPDIR},100M,1K \
+    HALT,${DL_DIR},100M,1K \
+    HALT,${SSTATE_DIR},100M,1K \
+    HALT,/tmp,10M,1K"
+
+
+#
+# Machine and distribution selection
+#
+DISTRO = "beaveros"
+MACHINE ?= "rock-5b-plus"
+# MACHINE ?= "radxa-zero-3e-custom"
+# MACHINE ?= "luckfox-lyra-plus"
+# MACHINE ?= "stm32mp15-disco"
+
+#
+# Build output and caches
+#
+TMPDIR = "/mnt/storage/beaveros"
+# DL_DIR ?= "/mnt/storage/yocto/downloads/"
+# SSTATE_DIR ?= "/mnt/storage/yocto/sstate-cache/"
+BB_GENERATE_MIRROR_TARBALLS = "1"
+BB_HASHSERVE_DB_DIR = "${SSTATE_DIR}"
+INHERIT += "rm_work"
+
+#
+# Additional features
+#
+# include features/camera.inc
+# include features/can.inc
+# include features/containers.inc
+# include features/display.inc
+# include features/gps.inc
+# include features/ota.inc
+# include features/rproc.inc
+# include features/spi.inc
+# include features/wifi-usb.inc
