@@ -1,0 +1,24 @@
+From: BeaverOS <dev@beaveros.invalid>
+Subject: [PATCH] meson: define gst_version_is_dev
+
+The root meson.build references gst_version_is_dev, but the variable is
+only defined in the gst-plugins-bad tree this repository was forked from.
+Meson aborts with "Unknown variable" before any target is configured.
+
+Upstream-Status: Inappropriate [vendor fork]
+---
+ meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+--- a/meson.build
++++ b/meson.build
+@@ -20,6 +20,8 @@ libversion = '@0@.@1@.0'.format(soversion, gst_version_minor * 100 + gst_version_micro)
+ 
+ plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
+ 
++gst_version_is_dev = gst_version_minor.is_odd()
++
+ cc = meson.get_compiler('c')
+ 
+ # Symbol visibility
