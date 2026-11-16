@@ -1,0 +1,1 @@
+do_create_v8_qemu_wrapper:class-native[vardepsexclude] += "QEMU_OPTIONS QEMU_EXTRAOPTIONS TUNE_PKGARCH TUNE_FEATURES DEFAULTTUNE ARMPKGARCH"
