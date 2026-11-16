@@ -1,6 +1,5 @@
-KERNEL_FEATURES += " \
-  features/usb/usb-gadgets.scc \
-"
+KERNEL_FEATURES:append:luckfox-lyra-plus = " features/usb/usb-gadgets.scc"
+KERNEL_FEATURES:append:stm32mp1 = " features/usb/usb-gadgets-stm32mp1.scc"
 
 IMAGE_INSTALL += " \
   iw \
